@@ -1,4 +1,4 @@
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_trim(char *str)
 {
@@ -20,7 +20,7 @@ char	*ft_trim(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*str;
+	static char	*str[256];
 	char		*dest;
 	int			size;
 	char		*buffer;
@@ -30,17 +30,17 @@ char	*get_next_line(int fd)
 	buffer[size] = '\0';
 	while (size > 0)
 	{
-		if (!str)
-			str = ft_strdup(buffer);
+		if (!str[fd])
+			str[fd] = ft_strdup(buffer);
 		else
-			str = ft_strjoin(str, buffer);
+			str[fd] = ft_strjoin(str[fd], buffer);
 		if (ft_strchr(buffer, '\n'))
 			break ;
 		size = read(fd, buffer, BUFFER_SIZE);
 		buffer[size] = 0;
 	}
 	free(buffer);
-	dest = ft_substr(str, 0, ft_strchr(str, '\n') - str + 1);
-	str = ft_trim(str);
+	dest = ft_substr(str[fd], 0, ft_strchr(str[fd], '\n') - str[fd] + 1);
+	str[fd] = ft_trim(str[fd]);
 	return (dest);
 }
