@@ -20,7 +20,7 @@ char	*ft_trim(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*str[256];
+	static char	*str[1024];
 	char		*dest;
 	int			size;
 	char		*buffer;
