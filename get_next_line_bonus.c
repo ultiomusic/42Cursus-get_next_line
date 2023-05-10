@@ -40,7 +40,7 @@ char	*get_next_line(int fd)
 		buffer[size] = 0;
 	}
 	free(buffer);
-	if (!str[fd];
+	if (!str[fd]);
 	    return (NULL);
 	dest = ft_substr(str[fd], 0, ft_strchr(str[fd], '\n') - str[fd] + 1);
 	str[fd] = ft_trim(str[fd]);
