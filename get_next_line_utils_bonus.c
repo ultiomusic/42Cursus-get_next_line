@@ -1,104 +1,69 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: beeligul <beeligul@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/11 18:14:59 by beeligul          #+#    #+#             */
+/*   Updated: 2023/05/11 18:15:01 by beeligul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line_bonus.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *str)
 {
-	int	i;
+	size_t	i;
 
-	i = -1;
-	while (s[++i])
-		;
+	i = 0;
+	while (str[i] != '\0')
+		i++;
 	return (i);
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strchr(char *str, int c)
 {
 	int		i;
-	int		ls;
-	char	*dup;
 
 	i = 0;
-	ls = ft_strlen(s);
-	ls++;
-	dup = malloc(ls);
-	if (!dup)
-		return (NULL);
-	while (ls > 0)
+	if (!str)
+		return (0);
+	if (c == '\0')
+		return ((char *)&str[ft_strlen(str)]);
+	while (str[i] != '\0')
 	{
-		dup[i] = s[i];
-		i++;
-		ls--;
-	}
-	return (dup);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (NULL);
-	if (c == 0)
-		return ((char *)s + ft_strlen(s));
-	while (s[i] != 0)
-	{
-		if (s[i] == c)
-			return ((char *)s + i);
+		if (str[i] == (char)c)
+			return ((char *)&str[i]);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char *str, char *buff)
 {
-	char	*dest;
+	size_t	c;
 	size_t	i;
-	size_t	length;
+	char	*new_str;
 
-	if (s == NULL)
+	if (!str)
+	{
+		str = (char *)malloc(sizeof(char));
+		str[0] = '\0';
+	}
+	if (!str || !buff)
 		return (NULL);
+	new_str = malloc(sizeof(char) * ((ft_strlen(str)) + ft_strlen(buff) + 1));
+	if (new_str == NULL)
+		return (NULL);
+	c = -1;
 	i = 0;
-	length = ft_strlen(s);
-	if (start >= length || !s)
-		len = 0;
-	else if (length < (start + len))
-		len = length - start;
-	dest = malloc(len + 1);
-	if (dest != NULL)
-	{
-		while (i < len && s[i])
-		{
-			dest[i] = s[start + i];
-			i++;
-		}
-		dest[i] = 0;
-	}
-	return (dest);
-}
-
-char	*ft_strjoin(char *s1, const char *s2)
-{
-	char	*dest;
-	size_t	len;
-	size_t	i;
-	size_t	j;
-
-	j = 0;
-	i = -1;
-	if (!s1 || !s2)
-		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2);
-	dest = malloc(len + 1);
-	if (!dest)
-		return (NULL);
-	while (s1[++i] != 0)
-		dest[i] = s1[i];
-	while (s2[j] != 0)
-	{
-		dest[i + j] = s2[j];
-		j++;
-	}
-	free(s1);
-	dest[i + j] = 0;
-	return (dest);
+	if (str)
+		while (str[++c] != '\0')
+			new_str[c] = str[c];
+	while (buff[i] != '\0')
+		new_str[c++] = buff[i++];
+	new_str[c] = '\0';
+	free(str);
+	return (new_str);
 }
