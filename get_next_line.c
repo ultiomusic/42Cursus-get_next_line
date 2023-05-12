@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: beeligul <beeligul@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 18:14:42 by beeligul          #+#    #+#             */
-/*   Updated: 2023/05/11 18:16:17 by beeligul         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line.h"
 
 char	*next_read(char *str)
@@ -36,31 +24,6 @@ char	*next_read(char *str)
 	next_str[j] = 0;
 	free(str);
 	return (next_str);
-}
-
-char	*read_first_line(char *str)
-{
-	char	*new_str;
-	int		i;
-
-	i = 0;
-	if (!str[i])
-		return (NULL);
-	while (str[i] != '\n' && str[i])
-		i++;
-	new_str = malloc(sizeof(char) * (i + 2));
-	if (!new_str)
-		return (NULL);
-	i = 0;
-	while (str[i] != '\n' && str[i])
-	{
-		new_str[i] = str[i];
-		i++;
-	}
-	if (str[i] == '\n')
-		new_str[i++] = '\n';
-	new_str[i] = 0;
-	return (new_str);
 }
 
 char	*read_line(char *str, int fd)

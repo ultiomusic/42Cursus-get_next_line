@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: beeligul <beeligul@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 18:15:12 by beeligul          #+#    #+#             */
-/*   Updated: 2023/05/11 18:15:14 by beeligul         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line_bonus.h"
 
 char	*next_read(char *str)
@@ -90,7 +78,7 @@ char	*read_line(char *str, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	*str[2048];
+	static char	*str[1024];
 	char		*line;
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
