@@ -39,3 +39,10 @@ char	*get_next_line(int fd)
 	str = next_read(str);
 	return (line);
 }
+/*
+int main()
+{
+	int fd("test.txt", O_CREAT | O_RDWR);
+	write(fd, "test", 4);
+	close(fd);
+}
