@@ -43,7 +43,7 @@ char	*get_next_line(int fd)
 int main()
 {
 	int fd = open("test.txt", O_CREAT | O_RDWR);
-	write(fd, "test\ngnl", 8);
+	write(fd, "test\ngnl\n", 9);
 	close(fd);
 	fd = open("test.txt", O_RDONLY);
 	printf("%s", get_next_line(fd));
