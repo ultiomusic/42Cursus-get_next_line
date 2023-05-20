@@ -42,7 +42,10 @@ char	*get_next_line(int fd)
 /*
 int main()
 {
-	int fd("test.txt", O_CREAT | O_RDWR);
-	write(fd, "test", 4);
+	int fd = open("test.txt", O_CREAT | O_RDWR);
+	write(fd, "test\ngnl", 8);
 	close(fd);
+	fd = open("test.txt", O_RDONLY);
+	printf("%s", get_next_line(fd));
 }
+*/
