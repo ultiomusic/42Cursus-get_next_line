@@ -42,10 +42,12 @@ char	*get_next_line(int fd)
 /*
 int main()
 {
-	int fd = open("test.txt", O_CREAT | O_RDWR);
-	write(fd, "test\ngnl\n", 9);
+	int fd = open("arabam3.txt", O_CREAT | O_RDWR, 777);
+	write(fd, "arabam\ndacia\n", 13);
 	close(fd);
-	fd = open("test.txt", O_RDONLY);
+	fd = open("arabam3.txt", O_RDONLY);
+	printf("%s", get_next_line(fd));
+	fd = open("arabam3.txt", O_RDONLY);
 	printf("%s", get_next_line(fd));
 }
 */
